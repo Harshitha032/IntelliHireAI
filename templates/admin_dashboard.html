@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="dashboard-container">
+    <div class="dashboard-grid">
+        <aside class="sidebar glass-card">
+            <h3>Admin Portal</h3>
+            <a href="#" class="sidebar-link active" onclick="showTab('admin-overview', this)"><i class="fa-solid fa-server"></i> System Health</a>
+            <a href="#" class="sidebar-link" onclick="showTab('admin-users', this)"><i class="fa-solid fa-users-cog"></i> User Management</a>
+            <a href="#" class="sidebar-link" onclick="logout()"><i class="fa-solid fa-sign-out-alt"></i> Logout</a>
+        </aside>
+        <main class="content-panel glass-container">
+            <div id="admin-overview-tab" class="tab-content" style="display:block;">
+                <h2 style="color: var(--dark); font-weight: 700; margin-bottom: 1.5rem; text-align: left;">System Overview</h2>
+                <div class="stats-grid">
+                    <div class="stat-card glass-card" style="background: rgba(255, 255, 255, 0.7);">
+                        <h4 style="color: var(--dark); font-weight: 600;">System Status</h4>
+                        <p class="value" id="admin-status" style="color:var(--secondary); font-size: 2rem;">Loading...</p>
+                    </div>
+                    <div class="stat-card glass-card" style="background: rgba(255, 255, 255, 0.7);">
+                        <h4 style="color: var(--dark); font-weight: 600;">Uptime</h4>
+                        <p class="value" id="admin-uptime" style="font-size: 2rem; color: var(--primary);">Loading...</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="admin-users-tab" class="tab-content" style="display:none;">
+                <div class="glass-card" style="margin-top:2rem;">
+                    <h3>Users</h3>
+                    <table style="width:100%; text-align:left; border-collapse: collapse; margin-top: 1rem;">
+                        <thead>
+                            <tr style="border-bottom: 2px solid var(--gray);">
+                                <th style="padding:10px;">ID</th>
+                                <th style="padding:10px;">Name</th>
+                                <th style="padding:10px;">Email</th>
+                                <th style="padding:10px;">Role</th>
+                                <th style="padding:10px; text-align:right;">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="admin-users">
+                            <!-- Populated via JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+{% endblock %}

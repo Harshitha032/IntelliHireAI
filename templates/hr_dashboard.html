@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="dashboard-container">
+    <div class="dashboard-grid">
+        <aside class="sidebar glass-card">
+            <h3>HR Portal</h3>
+            <a href="#" class="sidebar-link active" onclick="showTab('hr-overview', this)"><i class="fa-solid fa-chart-line"></i> Dashboard</a>
+            <a href="#" class="sidebar-link" onclick="showTab('hr-candidates', this)"><i class="fa-solid fa-users"></i> Candidates</a>
+            <a href="#" class="sidebar-link" onclick="logout()"><i class="fa-solid fa-sign-out-alt"></i> Logout</a>
+        </aside>
+        <main class="content-panel glass-container">
+            <div id="hr-overview-tab" class="tab-content">
+                <h2>HR Overview</h2>
+                <div class="stats-grid">
+                    <div class="stat-card glass-card">
+                        <h4>Total Interviews</h4>
+                        <p class="value" id="hr-total">0</p>
+                    </div>
+                    <div class="stat-card glass-card">
+                        <h4>Pending Review</h4>
+                        <p class="value" id="hr-pending">0</p>
+                    </div>
+                    <div class="stat-card glass-card">
+                        <h4>Avg Candidate Score</h4>
+                        <p class="value" id="hr-avg">0</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="hr-candidates-tab" class="tab-content" style="display:none;">
+                <div class="glass-card" style="margin-top:2rem;">
+                    <h3>All Candidates & Interviews</h3>
+                    <table style="width:100%; text-align:left; border-collapse: collapse; margin-top: 1rem;">
+                        <thead>
+                            <tr style="border-bottom: 2px solid var(--gray);">
+                                <th style="padding:10px;">Name</th>
+                                <th style="padding:10px;">Int ID</th>
+                                <th style="padding:10px;">Status</th>
+                                <th style="padding:10px;">Score</th>
+                                <th style="padding:10px;">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="hr-candidates-list">
+                            <tr><td colspan="5" style="padding:10px;">Loading candidates...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+
+<!-- Modal for Candidate View -->
+<div id="candidate-modal" class="modal">
+    <div class="modal-content glass-container">
+        <span class="close-btn" onclick="closeModal()">&times;</span>
+        <h2 id="modal-name">Candidate Name</h2>
+        
+        <h3 style="margin-top:1rem; margin-bottom:1rem;">Resume & Details</h3>
+        <div style="display: flex; gap: 1.5rem; align-items: flex-start; flex-wrap: wrap;">
+            <div style="flex: 0 1 auto; max-width: 250px; text-align: center;">
+                <img id="modal-photo" src="" alt="Candidate Photo" style="max-width: 100%; max-height: 300px; object-fit: contain; border-radius: 10px; display: none; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+                <p id="modal-no-photo" style="color:var(--gray); margin-top: 10px; font-size: 0.9rem;"><i class="fa-solid fa-user-circle"></i> No photo</p>
+            </div>
+            
+            <div style="flex: 1; min-width: 250px;">
+                <a id="modal-resume-btn" href="#" target="_blank" class="btn btn-primary" style="display:none; margin-bottom:1rem;"><i class="fa-solid fa-file-pdf"></i> View PDF Resume</a>
+                <p id="modal-no-resume" style="color:var(--gray);"><i class="fa-solid fa-ban"></i> No resume uploaded.</p>
+                
+                <div class="glass-card" style="margin-top: 1rem;">
+                    <p><strong>Skills:</strong> <span id="modal-skills"></span></p>
+                    <p style="margin-top:0.5rem;"><strong>Education:</strong> <span id="modal-education"></span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

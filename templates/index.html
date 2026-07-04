@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="hero">
+    <div class="hero-content">
+        <h1>Next Generation <span class="highlight">AI Recruitment</span> Platform</h1>
+        <p>Automate your interview process, evaluate candidates accurately, and hire top talent with the power of Artificial Intelligence.</p>
+        <div class="hero-buttons">
+            <a href="/register" class="btn btn-primary btn-large" style="padding: 1rem 2rem; font-size: 1.1rem;">Get Started</a>
+            <a href="#features" class="btn btn-outline btn-large" style="padding: 1rem 2rem; font-size: 1.1rem; margin-left: 1rem;">Learn More</a>
+        </div>
+    </div>
+    <div class="hero-image">
+        <div class="ai-illustration" style="text-align: center; padding: 3rem;">
+            <i class="fa-solid fa-robot floating-robot" style="color: darkblue; font-size: 15rem;"></i>
+        </div>
+    </div>
+</section>
+
+<section id="features" class="features">
+    <h2>Why IntelliHire AI?</h2>
+    <div class="feature-grid">
+        <div class="feature-card glass-card">
+            <i class="fa-solid fa-file-pdf"></i>
+            <h3>Smart Resume Parsing</h3>
+            <p>Automatically extract skills, experience, and education with high accuracy using AI.</p>
+        </div>
+        <div class="feature-card glass-card">
+            <i class="fa-solid fa-microphone"></i>
+            <h3>Voice AI Interviewer</h3>
+            <p>Interactive interviews with dynamic speech recognition, natural synthesis and avatars.</p>
+        </div>
+        <div class="feature-card glass-card">
+            <i class="fa-solid fa-chart-line"></i>
+            <h3>Comprehensive Analytics</h3>
+            <p>Detailed metrics on communication, technical knowledge, and problem-solving.</p>
+        </div>
+    </div>
+</section>
+{% endblock %}

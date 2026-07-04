@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="dashboard-container">
+    <div class="dashboard-grid">
+        <aside class="sidebar glass-card">
+            <h3>Candidate Portal</h3>
+            <a href="#" class="sidebar-link active" onclick="showTab('overview', this)"><i class="fa-solid fa-house"></i> Overview</a>
+            <a href="#" class="sidebar-link" onclick="showTab('resume', this)"><i class="fa-solid fa-file-pdf"></i> Resume</a>
+            <a href="#" class="sidebar-link" onclick="showTab('interviews', this)"><i class="fa-solid fa-video"></i> Interviews</a>
+            <a href="#" class="sidebar-link" onclick="logout()"><i class="fa-solid fa-sign-out-alt"></i> Logout</a>
+        </aside>
+        
+        <main class="content-panel glass-container">
+            <div id="overview-tab" class="tab-content">
+                <h2>Welcome, <span id="cand-name">Candidate</span></h2>
+                <div class="stats-grid">
+                    <div class="stat-card glass-card">
+                        <h4>Completed Interviews</h4>
+                        <p class="value" id="comp-interviews">0</p>
+                    </div>
+                    <div class="stat-card glass-card">
+                        <h4>Average Score</h4>
+                        <p class="value" id="avg-score">N/A</p>
+                    </div>
+                </div>
+                <div style="text-align:center; margin-top:3rem;">
+                    <button class="btn btn-primary btn-large" onclick="startInterview()" style="font-size:1.2rem; padding:1rem 2rem;">
+                        <i class="fa-solid fa-play"></i> Start AI Interview
+                    </button>
+                </div>
+            </div>
+            
+            <div id="resume-tab" class="tab-content" style="display:none;">
+                <h2>My Resume</h2>
+                <div class="glass-card" style="text-align:left;">
+                    <form id="resume-form" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label>Upload PDF Resume</label>
+                            <input type="file" id="resumeFile" accept="application/pdf" class="form-control" required>
+                        </div>
+                        <div class="form-group" style="margin-top:1rem; margin-bottom:1.5rem;">
+                            <label>Upload Professional Photo (Optional)</label>
+                            <input type="file" id="photoFile" accept="image/jpeg, image/png" class="form-control">
+                            <small style="color:var(--gray);"><i class="fa-solid fa-info-circle"></i> Please upload a professional headshot. This will be shown to the HR team.</small>
+                        </div>
+                        <button type="submit" class="btn btn-primary" id="upload-btn">
+                            <i class="fa-solid fa-cloud-arrow-up"></i> Upload & Analyze
+                        </button>
+                    </form>
+                    <div id="resume-analysis" style="margin-top:2rem; display:none; padding:1.5rem; background:rgba(255,255,255,0.5); border-radius:10px;">
+                        <h3><i class="fa-solid fa-robot"></i> AI Analysis Results</h3>
+                        <p><strong>ATS Compatibility:</strong> <span id="ats-score" style="color:var(--primary); font-weight:bold;"></span>%</p>
+                        <p><strong>Skills Detected:</strong> <span id="skills-list"></span></p>
+                        <p><strong>Key Strengths:</strong> <span id="strengths-list"></span></p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="interviews-tab" class="tab-content" style="display:none;">
+                <h2>Interview History</h2>
+                <div id="interviews-list" class="glass-card">
+                    <p>Loading...</p>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+{% endblock %}

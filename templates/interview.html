@@ -1,0 +1,108 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="interview-container">
+    <div class="interview-header glass-card">
+        <h2>AI Interview in Progress</h2>
+        <div id="status-badge" class="badge">Initializing...</div>
+    </div>
+    
+    <div class="interview-layout">
+        <!-- AI Avatar Side -->
+        <div class="ai-side glass-container">
+            <div class="avatar-container" id="avatar">
+                <div class="ai-avatar">
+                    <i class="fa-solid fa-user-astronaut"></i>
+                    <div class="speaking-waves" id="waves">
+                        <div class="wave"></div>
+                        <div class="wave"></div>
+                        <div class="wave"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="ai-text" id="ai-subtitle">
+                "Welcome to IntelliHire AI. Please allow camera and microphone access."
+            </div>
+        </div>
+
+        <!-- Candidate Video Side -->
+        <div class="candidate-side glass-container">
+            <div style="position:relative; width:100%; max-width:400px; margin:0 auto;">
+                <video id="webcam-video" autoplay muted></video>
+                <div class="recording-indicator" id="recording-dot" style="display:none;"></div>
+            </div>
+            
+            <div class="controls mt-4">
+                <button class="btn btn-primary" id="btn-start-answer" disabled style="padding:1rem 2rem; font-size:1.1rem;">
+                    <i class="fa-solid fa-microphone"></i> Start Answer
+                </button>
+                <button class="btn btn-outline" id="btn-stop-answer" disabled style="display:none; padding:1rem 2rem; font-size:1.1rem; color:#ef4444!important; border-color:#ef4444;">
+                    <i class="fa-solid fa-stop"></i> Finish Answer
+                </button>
+            </div>
+            
+            <div class="transcript-box mt-3 glass-card" style="width:100%; text-align:left;">
+                <p style="margin:0; color:var(--gray);"><strong>Your Answer:</strong></p>
+                <p id="live-transcript" style="margin-top:0.5rem; min-height:40px; font-size:1.1rem;"></p>
+            </div>
+
+            <!-- Fallback Text Input -->
+            <div id="fallback-container" style="display:none; margin-top:1rem; text-align:left; width: 100%;">
+                <textarea id="fallback-text" class="input-field" rows="3" placeholder="Having mic issues? Type your answer here..." style="width:100%; border-radius:10px;"></textarea>
+                <button id="btn-submit-text" class="btn btn-primary" style="margin-top:0.5rem; width:100%;"><i class="fa-solid fa-paper-plane"></i> Submit Typed Answer</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.interview-container { padding: 2rem 5%; max-width: 1200px; margin: 0 auto; }
+.interview-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; padding: 1rem 2rem; }
+.badge { background: var(--primary); color: white; padding: 0.5rem 1.2rem; border-radius: 20px; font-weight: 600; }
+
+.interview-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+@media(max-width:768px) { .interview-layout { grid-template-columns: 1fr; } }
+.ai-side, .candidate-side { padding: 2.5rem; display: flex; flex-direction: column; align-items: center; text-align: center; }
+
+.avatar-container { margin: 2rem 0 3rem 0; position: relative; }
+.ai-avatar { 
+    width: 220px; height: 220px; border-radius: 50%; 
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    display: flex; justify-content: center; align-items: center;
+    font-size: 6rem; color: white;
+    box-shadow: 0 10px 30px rgba(37,99,235,0.3);
+    position: relative;
+    z-index: 10;
+}
+
+.speaking-waves { display: none; position: absolute; top: -30px; left: -30px; right: -30px; bottom: -30px; border-radius: 50%; z-index: 1; }
+.speaking-waves .wave { 
+    position: absolute; inset: 0; border-radius: 50%; 
+    border: 3px solid var(--primary);
+    animation: pulse 1.5s infinite ease-out; 
+}
+.speaking-waves .wave:nth-child(2) { animation-delay: 0.5s; }
+.speaking-waves .wave:nth-child(3) { animation-delay: 1s; }
+
+@keyframes pulse {
+    0% { transform: scale(1); opacity: 0.8; }
+    100% { transform: scale(1.5); opacity: 0; }
+}
+
+.ai-text { font-size: 1.3rem; font-style: italic; color: var(--dark); min-height: 100px; padding: 1.5rem; background: rgba(255,255,255,0.7); border-radius: 12px; width: 100%; border-left: 4px solid var(--primary); }
+
+#webcam-video { width: 100%; border-radius: 15px; background: #000; aspect-ratio: 4/3; object-fit: cover; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+.recording-indicator { position: absolute; top: 15px; right: 15px; width: 15px; height: 15px; background: #ef4444; border-radius: 50%; animation: blink 1s infinite; box-shadow: 0 0 10px #ef4444; }
+@keyframes blink { 0% { opacity: 1; } 50% { opacity: 0.2; } 100% { opacity: 1; } }
+
+.mt-4 { margin-top: 2rem; }
+.mt-3 { margin-top: 1.5rem; }
+</style>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    const interviewId = {{ interview_id }};
+</script>
+<script src="{{ url_for('static', filename='js/interview.js') }}"></script>
+{% endblock %}
