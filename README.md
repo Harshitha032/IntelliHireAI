@@ -5,7 +5,7 @@ An AI-powered recruitment and interview assessment platform built with Flask, My
 
 Watch the complete project demonstration here:
 
-📹 https://drive.google.com/your-video-link
+📹 https://drive.google.com/file/d/1zQEmSh4F754ccQpACOYT2R0SZfbGtoVq/view?usp=sharing
 
 # 🤖 IntelliHire AI
 
