@@ -254,29 +254,43 @@ http://127.0.0.1:5000
 
 ---
 
-# 📸 Screenshots
+# 📸 Project Screenshots
 
-Add screenshots of the following pages:
+## 🏠 Homepage
 
-- Landing Page
-- Login Page
-- Candidate Dashboard
-- Resume Analysis
-- AI Interview
-- HR Dashboard
-- Admin Dashboard
+<p align="center">
+  <img src="screenshots/homepage.png" width="900">
+</p>
 
----
+## 🔐 Login Page
 
-# 🚀 Future Enhancements
+<p align="center">
+  <img src="screenshots/loginpage.png" width="900">
+</p>
 
-- Live AI Avatar Interviewer
-- Emotion Detection
-- Eye Contact Analysis
-- Interview Scheduling
-- Multi-language Support
-- Cloud Deployment
-- Coding Assessment Module
+## 📝 Register Page
+
+<p align="center">
+  <img src="screenshots/registerpage.png" width="900">
+</p>
+
+## 👤 Candidate Portal
+
+<p align="center">
+  <img src="screenshots/candidateportal.png" width="900">
+</p>
+
+## 👨‍💼 HR Portal
+
+<p align="center">
+  <img src="screenshots/hrportal.png" width="900">
+</p>
+
+## 👑 Admin Portal
+
+<p align="center">
+  <img src="screenshots/adminportal.png" width="900">
+</p>
 
 ---
 
