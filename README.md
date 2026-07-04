@@ -1,5 +1,12 @@
 # IntelliHireAI
 An AI-powered recruitment and interview assessment platform built with Flask, MySQL, HTML, CSS and JavaScript.
+
+## 🎥 Project Demo
+
+Watch the complete project demonstration here:
+
+📹 https://drive.google.com/your-video-link
+
 # 🤖 IntelliHire AI
 
 ![Python](https://img.shields.io/badge/Python-3.12-blue)
